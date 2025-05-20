@@ -193,6 +193,40 @@ app.post(
   }
 );
 
+app.post(
+  "/github/proxy/repos/:owner/:repo/pulls/:number/comments",
+  authenticate,
+  async (req, res) => {
+    const { owner, repo, number } = req.params;
+    const { body, commit_id, path, position } = req.body;
+
+    const token = userAccessTokens[req.user.login];
+    if (!token) return res.status(404).json({ message: "AccessToken 없음" });
+
+    try {
+      const response = await axios.post(
+        `https://api.github.com/repos/${owner}/${repo}/pulls/${number}/comments`,
+        {
+          body,
+          commit_id,
+          path,
+          position,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github+json",
+          },
+        }
+      );
+      res.json(response.data);
+    } catch (error) {
+      console.error("리뷰 코멘트 실패:", error.response?.data || error.message);
+      res.status(500).json({ message: "GitHub POST 호출 실패" });
+    }
+  }
+);
+
 // ✅ 서버 실행
 app.listen(PORT, () => {
   console.log(`✅ 백엔드 서버 실행 중: http://localhost:${PORT}`);
