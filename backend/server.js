@@ -147,7 +147,7 @@ app.get("/github/proxy", authenticate, async (req, res) => {
     }
 
     console.error(
-      "🔴 GitHub API 호출 실패:",
+      "GitHub API 호출 실패:",
       error.response?.data || error.message
     );
     return res.status(status).json({
@@ -160,6 +160,38 @@ app.get("/github/proxy", authenticate, async (req, res) => {
 // Challenge API 등록
 connectDB();
 app.use("/api/challenge", challengeRoutes);
+
+app.post(
+  "/github/proxy/repos/:owner/:repo/issues/:number/comments",
+  authenticate,
+  async (req, res) => {
+    const { owner, repo, number } = req.params;
+    const { body } = req.body;
+
+    const token = userAccessTokens[req.user.login];
+    if (!token) return res.status(404).json({ message: "AccessToken 없음" });
+
+    try {
+      const response = await axios.post(
+        `https://api.github.com/repos/${owner}/${repo}/issues/${number}/comments`,
+        { body },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github+json",
+          },
+        }
+      );
+      res.json(response.data);
+    } catch (error) {
+      console.error(
+        "일반 PR 코멘트 실패:",
+        error.response?.data || error.message
+      );
+      res.status(500).json({ message: "GitHub POST 호출 실패" });
+    }
+  }
+);
 
 // ✅ 서버 실행
 app.listen(PORT, () => {
