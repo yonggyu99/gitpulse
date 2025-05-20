@@ -1,0 +1,29 @@
+.repoInfoCon {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1.5rem;
+}
+.repoInfoItems {
+  display: flex;
+  gap: 1.5rem;
+}
+.repoInfoItems > div,
+.repoReviewItems {
+  flex: 1;
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.repoInfoCon p:nth-child(2) {
+  font-size: 24px;
+}
+.repoInfoItems > div:nth-child(1) {
+  background: #e3f5ff;
+}
+.repoInfoItems > div:nth-child(2) {
+  background: white;
+}
+.repoReviewItems {
+  background-color: #e5ecf6;
+}

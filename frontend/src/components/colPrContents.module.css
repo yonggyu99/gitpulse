@@ -1,0 +1,41 @@
+/* md UI */
+.prMdCon {
+  background-color: white;
+  color: #24292f;
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
+  max-height: 40rem;
+  overflow: auto;
+  border-radius: 0.5rem;
+}
+.prMdCon h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 0.3rem;
+}
+.prCommentCon .prMdCon h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 0.3rem;
+}
+.prCommentCon .prMdCon img {
+  width: 80%;
+}
+.prMdCon pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+}
+.prMdCon code {
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: "Courier New", monospace;
+}

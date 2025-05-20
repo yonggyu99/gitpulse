@@ -1,0 +1,99 @@
+.tableWrapper {
+  width: 100%;
+  margin-top: 1rem;
+
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+.tableWrapper:hover {
+  transform: translateY(-3px);
+}
+.tableHeader,
+.tableBody {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.scrollBody {
+  max-height: 14rem;
+  overflow-y: auto;
+}
+.tableWrapper th,
+.tableWrapper td {
+  padding: 0.625rem;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+.colTitle {
+  width: 30%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.loader {
+  display: flex;
+  align-items: anchor-center;
+  margin: auto;
+  justify-content: center;
+  font-size: 20px;
+}
+.loader img {
+  height: 300px;
+}
+.tableTitle {
+  display: flex;
+  gap: 1rem;
+  align-items: anchor-center;
+}
+.tableTitle h3 {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+.tableTitle > p {
+  color: #898989;
+  font-size: 15px;
+}
+.tableTitle i {
+  cursor: pointer;
+  font-size: 19px;
+  color: #898989;
+  position: relative;
+}
+.iconCon {
+  position: relative;
+  display: inline-block;
+}
+.tableDesc {
+  position: absolute;
+  left: 21rem;
+  bottom: 0rem;
+  transform: translateX(-50%);
+  background: rgba(60, 60, 60, 0.9);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+
+  padding: 1rem;
+}
+
+.iconCon:hover .tableDesc {
+  opacity: 1;
+}
+.iconCon .tableDesc ul {
+  font-size: 15px;
+}
+
+.iconCon .tableDesc p {
+  font-size: 17px;
+}

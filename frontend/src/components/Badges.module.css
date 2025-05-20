@@ -1,0 +1,41 @@
+.carouselWrapper {
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    background-color: #fff;
+    transition : 0.2s ease;
+  }
+
+.carouselWrapper:hover{
+  transform : translateY(-3px);
+}
+  
+.carouselCard {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 1rem;
+    background-color: transparent;
+    border-radius: .5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    height: 100%;
+  }
+
+.badgeImage {
+    max-width: 30%;
+    height: auto;
+  }
+  
+  /* 화살표 아이콘 */
+.arrow {
+    font-size: 2rem;
+    color: #C7BCE4;             /* 기본 색 */
+    transition: color 0.3s;
+  }
+.carousel-control-prev:hover .arrow,
+.carousel-control-next:hover .arrow {
+    color: #5F41B2;             /* hover 시 색 */
+  }

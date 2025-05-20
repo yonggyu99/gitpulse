@@ -1,0 +1,42 @@
+.repoTable {
+    flex: 2;
+    background-color:  white;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.04);
+    display : flex;
+    flex-direction: column;
+    max-height : 30rem;
+    overflow-y : auto;
+  }
+  
+  .repoTable h4 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight : bold;
+  }
+  
+  .repoTable table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  
+  .repoTable th,
+  .repoTable td {
+    padding: 0.625rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  .repoLink {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .repoLink:hover {
+    background-color: #C7BCE4;
+    border-radius : 20px;
+    padding : 0.2rem 0.5rem;
+  }

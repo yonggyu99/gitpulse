@@ -1,0 +1,124 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+.modalMain {
+  margin: 0 !important;
+  padding: 2rem;
+  width: 100%;
+  overflow: overlay;
+  
+}
+
+.modalContainer {
+  background: white;
+  padding: 2rem;
+  border-radius: 2rem;
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  overflow: none;
+}
+
+.modalContainer::-webkit-scrollbar {
+  width: 6px;
+}
+.modalContainer::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px;
+}
+.modalContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.main {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.contentContainer {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.bottom {
+  display : flex;
+  flex-direction: column !important;
+  gap : 3rem;
+}
+.repoWrapper {
+  width: 100%;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+
+.commitTimeChart {
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.04);
+  border-radius: 0.5rem;
+}
+
+.commitTimeChart h4 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight : 700;
+  padding-left : 1rem;
+  padding-top : 1rem;
+}
+
+.noResultWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.noResultImage {
+  width: 400px;
+  margin-bottom: 2rem;
+}
+
+.noResultText {
+  font-size: 1.4rem;
+  color: #444;
+  font-weight: 700;
+  line-height: 1.6;
+  white-space: pre-line;
+}

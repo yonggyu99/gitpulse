@@ -1,0 +1,181 @@
+.cardValue {
+  cursor: pointer;
+}
+
+.repoSelect {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+  border: none;
+  padding-right: 10px;
+}
+.contributions {
+  padding: 4rem 0;
+}
+.RecentlyCon {
+  display: flex;
+  gap: 3rem;
+}
+.RecentlyCon > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+.RecentlyItem > div {
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  min-height: 300px;
+  max-height: 380px;
+  height: 100%;
+  justify-content: center;
+  padding: 1rem;
+}
+.RecentlyItem > div:hover {
+  transform: translateY(-3px);
+}
+.RecentlyCon .RecentPRItem {
+  padding: 1rem;
+  text-align: left;
+}
+.RecentPRItem div:nth-child(1) {
+  font-size: 21px;
+}
+.RecentPRItem div:nth-child(3) {
+  overflow: auto;
+  background: #f0f0ff;
+  color: #000000;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.RecentPRItem div:nth-child(3) h2 {
+  font-size: 1.5rem;
+}
+.RecentPRItem div:nth-child(3) img {
+  width: 100%;
+}
+.RecentPRItem div:nth-child(3) blockquote {
+  margin: 0;
+}
+.RecentPRItem div:nth-child(4) {
+  font-size: 14px;
+  color: #9a9a9a;
+  margin-top: 0.5rem;
+}
+.RecentlyCon h1 {
+  font-weight: 500;
+}
+.RecentlyItem .RankingItem img {
+  width: 40%;
+}
+.RankingItem {
+  align-items: center;
+}
+.RankingItem div:nth-child(1) {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--main-purple);
+}
+.RankingItem div strong {
+  font-size: 23px;
+}
+.repoInfoCon {
+  display: flex;
+  gap: 3rem;
+  margin: 4rem 0;
+}
+.emptyPRItem {
+  text-align: center;
+  font-size: 20px;
+}
+h3 > strong {
+  font-weight: 500;
+}
+strong {
+  color: var(--main-purple);
+}
+
+@media (max-width: 1410px) {
+  .RecentlyCon,
+  .repoInfoCon {
+    gap: 2rem;
+  }
+
+  .RecentlyItem > div {
+    min-height: 260px;
+  }
+
+  .RecentPRItem div:nth-child(1) {
+    font-size: 19px;
+  }
+
+  .RecentPRItem div:nth-child(3) h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .RecentlyCon,
+  .repoInfoCon {
+    flex-direction: column;
+  }
+
+  .RecentlyItem > div {
+    max-height: none;
+    height: auto;
+  }
+
+  .RankingItem {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .RankingItem div:nth-child(1) {
+    font-size: 22px;
+  }
+
+  .RankingItem div strong {
+    font-size: 20px;
+  }
+
+  .RecentlyItem .RankingItem img {
+    width: 60%;
+  }
+}
+
+@media (max-width: 764px) {
+  .RecentlyItem > div,
+  .RecentPRItem div:nth-child(3) {
+    padding: 0.75rem;
+  }
+
+  .RecentPRItem div:nth-child(1) {
+    font-size: 17px;
+  }
+
+  .RecentPRItem div:nth-child(3) {
+    font-size: 0.95rem;
+  }
+
+  .RecentPRItem div:nth-child(4) {
+    font-size: 12px;
+  }
+
+  .repoSelect {
+    font-size: 1.5rem;
+  }
+
+  .emptyPRItem {
+    font-size: 1rem;
+  }
+}
+.slider {
+  margin-top: 100px;
+}

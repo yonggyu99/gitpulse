@@ -1,0 +1,44 @@
+:root {
+  --card-width: 25rem;
+  --card-gap: 9rem;
+}
+.container {
+  width: 100%;
+  background-color: #f9f9fc;
+  padding: 2rem 1rem;
+}
+.title {
+  font-size: 3rem;
+  color: #5a5f6b;
+  text-align: left;
+  font-weight: 700;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+}
+.challengeRow {
+  display: flex;
+  justify-content: space-between;
+  width: calc(var(--card-width) * 3 + var(--card-gap) * 2);
+  margin: 0 auto;
+  max-width: 80%;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.viewerSection {
+  margin-top: 2rem;
+}
+.period {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #666;
+  text-align: left;
+  max-width: 80%;
+  margin: auto;
+}
+@media (max-width: 1080px) {
+  .challengeRow {
+    flex-direction: column;
+    width: 100%;
+  }
+}

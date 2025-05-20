@@ -1,0 +1,47 @@
+.scrollContainer {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.track {
+  /* width: 85%; */
+  height: 6px;
+  margin-top: 40px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumb {
+  height: 100%;
+  background: #c7bce4;
+  border-radius: 3px;
+  transition: transform 0.2s ease, width 0.2s ease;
+}
+
+/* 반응형 대응 */
+@media (max-width: 768px) {
+  .track {
+    height: 4px;
+    width: 100%;
+  }
+
+  .thumb {
+    background: #c7bce4;
+  }
+}
+
+@media (max-width: 1600px) {
+  .track {
+    height: 4px;
+    width: 90%;
+  }
+
+  .thumb {
+    background: #c7bce4;
+  }
+}
+
+@media (max-width: 1710px) {
+}

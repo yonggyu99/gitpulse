@@ -1,0 +1,59 @@
+.prTable {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.04);
+  padding: 1rem;
+  box-sizing: border-box;
+  max-height: 14rem;
+  flex: 1.4;
+}
+.tableWrapper {
+  width: 100%;
+  margin-top: 1rem;
+}
+.tableHeader,
+.tableBody {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.scrollBody {
+  max-height: 8rem;
+  overflow-y: auto;
+}
+.tableWrapper th,
+.tableWrapper td {
+  padding: 0.625rem;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+.colTitle {
+  width: 35%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.colStars {
+  width: 20%;
+}
+.colCreated {
+  width: 30%;
+}
+.colReview {
+  width: 15%;
+}
+.colReview button {
+  border: none;
+  outline: none;
+  background: #f2f2f2;
+  padding: 0.3rem 0.6rem;
+  border-radius: 10px;
+}
+.prLink {
+  color: inherit;
+  text-decoration: none;
+}
+.prLink:hover {
+  text-decoration: underline;
+}

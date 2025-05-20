@@ -1,0 +1,145 @@
+.sideBarCon {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-width: 300px;
+  max-width: 350px;
+  background: white;
+  border-right: 1px solid #b4b6c573;
+  padding: 2rem;
+}
+
+/* 오버레이 */
+.sideBarCon.on {
+  transform: translateX(0);
+}
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  font-size: 1.5rem;
+}
+
+.closeButton {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 102;
+  color: var(--main-purple);
+}
+
+.icon img {
+  height: 90px;
+}
+
+.sideBarList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  overflow-x: hidden;
+}
+
+.sideBarList > a:hover {
+  background-color: #efefef;
+  border-radius: 20rem;
+}
+
+.scrollableArea {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); /* 아이콘과 로그아웃 제외한 영역 */
+  padding-bottom: 1rem;
+  overflow-x: hidden;
+}
+
+.sideBarList > a {
+  color: var(--main-dark-gray);
+  padding: 10px 20px 10px 30px;
+  background: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-weight: 400;
+  font-family: inter;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.sideBarList > a.active {
+  color: var(--main-purple);
+  transition: 0.5s ease;
+  border-radius: 20rem;
+  background-color: #efefef;
+}
+.sideBarList > a > i {
+  font-size: 25px;
+}
+.logoutButton {
+  margin-top: 10px;
+  /* margin-left: 30px; */
+  padding: 10px 30px;
+  background-color: var(--main-dark-gray);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: 90%;
+  margin: auto;
+}
+
+.logoutButton:hover {
+  background-color: #d82700;
+}
+.divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 1rem 0;
+  margin-right: -2rem;
+}
+
+@media (max-width: 1410px) {
+  .sideBarCon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 33.333vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .sideBarCon.on {
+    transform: left;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .closeButton {
+    display: block; /* 작은 화면에서 닫기 버튼 표시 */
+  }
+  .icon img {
+    margin-left: 1rem; /* 변경: 로고 왼쪽으로 이동 */
+  }
+}

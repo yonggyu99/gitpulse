@@ -1,0 +1,133 @@
+/* RewardBadges.module.css */
+
+.modalTitle {
+  color: #5F41B2;
+  font-weight : 700;
+}
+
+.badgesWrapper {
+  position: relative; 
+  cursor: default;
+}
+
+.modalBody {
+  padding-top: 1rem;
+}
+
+.badgeList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.badgeItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.badgeIconContainer {
+  width: 8rem;
+  text-align: center;
+}
+
+.badgeIcon {
+  width: 8rem;
+  object-fit: cover;
+}
+
+.badgeTitle {
+  font-weight: bold;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.badgeInfo {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badgeDesc {
+  font-size: 0.9rem;
+  color: black;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}
+
+.badgeCondition {
+  font-size: 0.8rem;
+  color: black;
+}
+
+.locked {
+  filter: blur(2px);
+  opacity: 0.4;
+}
+
+.loadingBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.loadingImage {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.loadingText {
+  font-size: 1rem;
+  color: #5F41B2;
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.helpButton {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #5F41B2;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s;
+}
+
+.helpButton:hover {
+  color: #a18bff;
+}

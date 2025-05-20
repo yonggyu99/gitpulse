@@ -1,0 +1,12 @@
+.prCommentDesc {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.prCommentDesc div {
+  background: white;
+  padding: 0.5rem 2rem;
+  box-shadow: 5px 5px 8px #e8e8e891;
+  border-radius: 21px;
+}

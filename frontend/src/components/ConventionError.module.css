@@ -1,0 +1,15 @@
+.conventionErrorCon {
+  margin: 4rem 0;
+}
+.tableTitle {
+  display: flex;
+  gap: 1.5rem;
+  align-items: anchor-center;
+}
+.tableTitle h3 {
+  margin-bottom: 0;
+}
+.tableTitle > p {
+  color: #898989;
+  font-size: 15px;
+}

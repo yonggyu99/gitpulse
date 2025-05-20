@@ -1,0 +1,8 @@
+.prSidebar {
+  height: 35rem;
+  overflow: auto;
+  border: 1px solid #dadada;
+  padding: 1rem;
+  border-radius: 15px 0 0 15px;
+  margin-top: 2.5rem;
+}

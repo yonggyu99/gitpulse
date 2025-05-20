@@ -1,0 +1,294 @@
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 90vh;
+  background-color: #f9f9fc;
+  border-radius: 16px;
+  overflow-x: hidden;
+}
+
+/* 메인 컨텐츠 */
+.main {
+  flex: 1;
+  padding: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.contentContainer {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* 카드 */
+.profileStats {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+
+.card {
+  flex: 1;
+  max-width: 30rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.05);
+  padding: 1.25rem 1.5rem;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card i {
+  width: 5rem;
+  height: 5rem;
+  background-color: rgba(124, 58, 237, 0.1);
+  color: #7b3fe4;
+  border-radius: 50%;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardLabel {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.cardValue {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+}
+
+/* 뱃지 */
+.badgeSection {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  align-items: stretch;
+}
+
+.badge {
+  width: 7rem;
+  object-fit: contain;
+}
+
+/* 원형 그래프 */
+.commitTimeChart {
+  flex: 1;
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.04);
+  text-align: left;
+}
+
+.commitTimeChart h4 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.chartBox {
+  height: 12.5rem;
+  background-color: #f0f0f5;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.commitCount p {
+  font-size: 0.875rem;
+  color: #444;
+  margin: 0.25rem 0;
+}
+
+/* 왼쪽·오른쪽에 flex 박스 지정 */
+.badgeCol,
+.commentCol {
+  flex: 1;
+  display: flex;
+}
+
+/*높이 채우기 */
+.badgeCol > *,
+.commentCol > * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 9rem;
+}
+
+/* (선택) 카드 내부 중앙 정렬 */
+.commentCol > * {
+  justify-content: center;
+  align-items: center;
+}
+
+/* 커밋 잔디 */
+.contributions {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.04);
+}
+
+.contributions h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.contributionGraph {
+  height: 5.5rem;
+  background-color: #f0f0f5;
+  border-radius: 0.5rem;
+}
+
+/* 하단 레이아웃 */
+.bottom {
+  display: flex;
+  gap: 4rem;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 16px;
+}
+
+.modalContainer {
+  background-color: #fff;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 100vh;
+  max-height: 10vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.errorMessage {
+  color: #ff4d4f;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 5rem;
+  text-align: center;
+  background-color: yellow;
+  border-radius: 0.25rem;
+}
+
+@media (max-width: 1410px) {
+  .container {
+    flex-direction: column;
+    width: 100vw;
+  }
+  .main {
+    width: 100%;
+    margin: 0;
+    padding: 1.5rem;
+  }
+  .contentContainer {
+    max-width: 95%;
+    width: 100%;
+  }
+  .profileStats {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bottom {
+    flex-direction: column;
+  }
+  .badgeSection {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .main {
+    padding: 1rem;
+  }
+
+  .contentContainer {
+    max-width: 100%;
+  }
+
+  .profileStats {
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 1rem;
+  }
+
+  .card {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .badgeSection {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .commitTimeChart {
+    padding: 1rem;
+  }
+
+  .modalContainer {
+    max-width: 95vw;
+    max-height: 90vh;
+    border-radius: 20px;
+  }
+
+  .errorMessage {
+    font-size: 1rem;
+    margin: 2rem;
+  }
+}
+
+@media (max-width: 1100px) {
+}

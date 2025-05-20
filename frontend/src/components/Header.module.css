@@ -1,0 +1,161 @@
+.headerContainer {
+  width: 80%;
+  padding: 3rem 0;
+  margin: 0 auto;
+}
+/* 상단 인사말 + 검색 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileImage {
+  width: 7rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+  object-fit: cover;
+}
+
+.headerHighlight {
+  color: var(--main-purple);
+  font-weight: bold;
+}
+.textGroup h2 {
+  font-size: var(--fs33);
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.textGroup p {
+  color: #888;
+  font-size: 1.3rem;
+}
+
+.search {
+  position: relative;
+  width: 25rem !important;
+  height: 4rem;
+  background-color: #f2f2f2;
+  border-radius: 15rem;
+  padding-left: 1.2rem;
+  padding-right: 2.5rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.search input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: var(--fs14);
+  outline: none;
+  color: #333;
+}
+
+.search i {
+  position: absolute;
+  right: 1rem;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+}
+.modalname {
+  position: relative;
+  width: 10rem;
+  height: 4rem;
+  background-color: #f2f2f2;
+  border-radius: 15rem;
+  padding-left: 1.2rem;
+  padding-right: 2.5rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .headerContainer {
+    width: 90%;
+    padding: 2rem 0;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .search {
+    width: 100% !important;
+    height: 3.5rem;
+  }
+
+  .search input {
+    font-size: 1rem;
+  }
+
+  .profileImage {
+    width: 5rem;
+    margin-right: 1rem;
+  }
+
+  .textGroup h2 {
+    font-size: 2rem;
+  }
+
+  .textGroup p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerContainer {
+    width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
+  .profileImage {
+    width: 4rem;
+    margin-right: 0;
+  }
+
+  .textGroup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .textGroup p {
+    font-size: 0.9rem;
+  }
+
+  .search {
+    width: 100% !important;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+  }
+
+  .search i {
+    font-size: 0.9rem;
+  }
+
+  .modalname {
+    width: 100%;
+    height: 3rem;
+  }
+}

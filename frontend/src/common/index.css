@@ -1,0 +1,61 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  --main-purple: #5f41b2;
+  --main-light-purple: #c7bce4;
+  --main-dark-gray: #545d69;
+
+  --fs8: 8px;
+  --fs12: 12px;
+  --fs16: 16px;
+  --fs20: 20px;
+  --fs26: 24px;
+  --fs33: 33px;
+  --fs64: 64px;
+
+  line-height: 1.6;
+}
+p {
+  margin-bottom: 0;
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--main-purple);
+}
+.nav-link {
+  color: var(--main-purple);
+}
+.nav-item {
+  display: block;
+  width: 100%;
+}
+
+.text-ellipsis {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.spinnerCon {
+  height: 100vh;
+  margin: auto;
+  align-content: center;
+  text-align: center;
+}

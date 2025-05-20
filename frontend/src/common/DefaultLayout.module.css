@@ -1,0 +1,6 @@
+.defaultLayout {
+  display: flex;
+}
+.defaultLayout > div:nth-child(2) {
+  width: 100%;
+}

@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #f9f9fc;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  font-family: "Pretendard-Regular";
+  background-image: url(/img/bg-pattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-family: "Pretendard-Regular";
+}
+
+.logo {
+  width: 380px;
+  height: auto;
+}
+
+.subtitle {
+  font-size: 26px;
+  color: var(--main-dark-gray);
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  font-family: "S-CoreDream-3Light";
+}
+
+.startButton {
+  padding: 1rem 120px;
+  font-size: 25px;
+  background: linear-gradient(90deg, #a58eff, #e1bfff);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 6px 12px rgba(150, 120, 255, 0.3);
+  transition: all 0.3s ease;
+}
+.startButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(150, 120, 255, 0.4);
+}
+
+@media (max-width: 1410px) {
+  .container {
+    margin-left: 0;
+  }
+}
