@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const API_BASE = `${import.meta.env.VITE_API_URL}/github/proxy`;
+
 // ✅ 백엔드 프록시 경로 설정
 const github = axios.create({
-  baseURL: "http://localhost:4000/github/proxy",
+  baseURL: API_BASE,
 });
 
 /**

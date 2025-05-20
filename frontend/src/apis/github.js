@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export const githubAxios = axios.create({
   baseURL: "https://api.github.com",
@@ -427,7 +427,6 @@ export const getKRMonthRange = (year, month) => {
     label: `${month}월 1일 ~ ${month}월 ${end.getUTCDate()}일`,
   };
 };
-
 
 export const getAllUserCommitRepos = async (username, since, until) => {
   try {

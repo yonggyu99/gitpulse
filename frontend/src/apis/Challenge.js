@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:4000/api/challenge";
+const API_BASE = `${import.meta.env.VITE_API_URL}/api/challenge`;
 
 // 챌린지 참여 요청
 export const joinChallenge = async ({ githubId, type }) => {
