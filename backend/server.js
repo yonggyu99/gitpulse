@@ -14,12 +14,19 @@ const FRONT_URL = process.env.FRONT_URL || "http://localhost:5173";
 const SERVER_URL =
   process.env.SERVER_URL || `http://localhost:${process.env.PORT || 4000}`;
 const PORT = process.env.PORT || 4000;
+const allowedOrigins = ["http://localhost:5173", FRONT_URL];
 
 const userAccessTokens = {};
 
 app.use(
   cors({
-    origin: FRONT_URL,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
