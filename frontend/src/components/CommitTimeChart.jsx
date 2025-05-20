@@ -66,7 +66,7 @@ const CommitTimeChart = ({ username }) => {
               className={css.dot}
               style={{ backgroundColor: COLORS[idx % COLORS.length] }}
             />
-            <span>{item.name}asdf</span>
+            <span>{item.name}</span>
           </div>
         ))}
       </div>
