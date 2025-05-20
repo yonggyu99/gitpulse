@@ -1,9 +1,4 @@
 {
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
   "devDependencies": {
     "@types/react": "^19.1.3"
   },

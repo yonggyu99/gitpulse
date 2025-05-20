@@ -1,6 +1,6 @@
 // pages/NewsPage.jsx
 import React from "react";
-import css from "./newsPage.module.css";
+import css from "./NewsPage.module.css";
 import ITblog from "../components/ITblog";
 const NewsPage = () => {
   return (
