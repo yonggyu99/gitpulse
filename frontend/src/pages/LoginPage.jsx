@@ -5,6 +5,8 @@ import styles from "./LoginPage.module.css";
 import LogoutBtn from "../components/LogoutBtn";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE = import.meta.env.VITE_API_URL;
+
 const LoginPage = () => {
   const [socialUser, setSocialUser] = useState(null);
   const navigate = useNavigate();
@@ -39,7 +41,7 @@ const LoginPage = () => {
   }, []);
 
   const onClickSocialLogin = async () => {
-    const res = await fetch("http://localhost:4000/oauth/github");
+    const res = await fetch(`${API_BASE}/oauth/github`);
     const { url } = await res.json();
     window.open(url, "_blank", "width=400,height=300");
   };
