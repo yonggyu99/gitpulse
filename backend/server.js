@@ -108,18 +108,25 @@ function authenticate(req, res, next) {
 // GitHub proxy
 app.get("/github/proxy", authenticate, async (req, res) => {
   const { path, ...params } = req.query;
-  let fullPath = path;
+
+  let dp = path;
   try {
-    fullPath = decodeURIComponent(fullPath);
-    fullPath = decodeURIComponent(fullPath);
+    dp = decodeURIComponent(dp);
   } catch (e) {}
-  if (!fullPath.startsWith("/")) fullPath = `/${fullPath}`;
+  try {
+    dp = decodeURIComponent(dp);
+  } catch (e) {}
+  const fullPath = dp.startsWith("/") ? dp : `/${dp}`;
 
   const token = userAccessTokens[req.user.login];
   if (!token) return res.status(404).json({ message: "AccessToken 없음" });
 
   try {
     const isReadme = fullPath.includes("/readme");
+    console.log("👉 요청한 fullPath:", fullPath);
+    console.log("👉 params:", params);
+    console.log("👉 userAccessTokens[login]:", req.user.login, token);
+
     const githubRes = await axios.get(`https://api.github.com${fullPath}`, {
       params,
       headers: {
@@ -133,8 +140,15 @@ app.get("/github/proxy", authenticate, async (req, res) => {
 
     res.send(githubRes.data);
   } catch (error) {
-    console.error("GitHub API 호출 실패:", error?.response?.data || error);
-    res.status(500).json({ message: "GitHub 호출 실패" });
+    console.error(
+      "🔴 GitHub API 호출 실패:",
+      error.response?.data || error.message
+    );
+
+    return res.status(error.response?.status || 500).json({
+      message: "GitHub 호출 실패",
+      githubMessage: error.response?.data?.message || "unknown",
+    });
   }
 });
 
