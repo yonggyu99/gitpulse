@@ -123,9 +123,6 @@ app.get("/github/proxy", authenticate, async (req, res) => {
 
   try {
     const isReadme = fullPath.includes("/readme");
-    console.log("👉 요청한 fullPath:", fullPath);
-    console.log("👉 params:", params);
-    console.log("👉 userAccessTokens[login]:", req.user.login, token);
 
     const githubRes = await axios.get(`https://api.github.com${fullPath}`, {
       params,
@@ -140,14 +137,22 @@ app.get("/github/proxy", authenticate, async (req, res) => {
 
     res.send(githubRes.data);
   } catch (error) {
+    const status = error.response?.status || 500;
+    const message = error.response?.data?.message || "GitHub 호출 실패";
+
+    // 빈 레포 에러는 따로 처리해서 빈 배열을 반환
+    if (message === "Git Repository is empty.") {
+      console.warn(`⚠️ Empty repository for ${fullPath}`);
+      return res.status(200).json([]); // 프론트가 parse할 수 있게 정상 응답
+    }
+
     console.error(
       "🔴 GitHub API 호출 실패:",
       error.response?.data || error.message
     );
-
-    return res.status(error.response?.status || 500).json({
+    return res.status(status).json({
       message: "GitHub 호출 실패",
-      githubMessage: error.response?.data?.message || "unknown",
+      githubMessage: message,
     });
   }
 });
