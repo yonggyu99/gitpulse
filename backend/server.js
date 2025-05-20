@@ -11,7 +11,9 @@ const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 const JWT_SECRET = process.env.JWT_SECRET || "my_jwt_secret_key";
 const FRONT_URL = process.env.FRONT_URL || "http://localhost:5173";
-const SERVER_URL = process.env.SERVER_URL || "http://localhost:4000";
+const SERVER_URL =
+  process.env.SERVER_URL || `http://localhost:${process.env.PORT || 4000}`;
+const PORT = process.env.PORT || 4000;
 
 const userAccessTokens = {};
 
@@ -78,4 +80,9 @@ app.get("/oauth/github/callback", async (req, res) => {
     console.error("OAuth 실패:", error);
     res.status(500).send("GitHub OAuth 실패");
   }
+});
+
+// ✅ 서버 실행
+app.listen(PORT, () => {
+  console.log(`✅ 백엔드 서버 실행 중: http://localhost:${PORT}`);
 });
