@@ -89,6 +89,55 @@ app.get("/oauth/github/callback", async (req, res) => {
   }
 });
 
+function authenticate(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) return res.status(401).json({ message: "인증 토큰 없음" });
+
+  const token = authHeader.split(" ")[1];
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (e) {
+    return res.status(401).json({ message: "토큰 검증 실패" });
+  }
+}
+
+// GitHub Proxy (README 자동 디코딩 포함)
+app.get("/github/proxy", authenticate, async (req, res) => {
+  const { path, ...params } = req.query;
+
+  let dp = path;
+  try {
+    dp = decodeURIComponent(dp);
+  } catch (e) {}
+  try {
+    dp = decodeURIComponent(dp);
+  } catch (e) {}
+
+  const fullPath = dp.startsWith("/") ? dp : `/${dp}`;
+  const token = userAccessTokens[req.user.login];
+  if (!token) return res.status(404).json({ message: "AccessToken 없음" });
+
+  try {
+    const isReadme = fullPath.includes("/readme");
+    const githubRes = await axios.get(`https://api.github.com${fullPath}`, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: isReadme
+          ? "application/vnd.github.v3.raw"
+          : "application/vnd.github+json",
+      },
+      responseType: isReadme ? "text" : "json",
+    });
+    res.send(githubRes.data);
+  } catch (error) {
+    console.error("Proxy 실패:", error.response?.data || error.message);
+    res.status(500).json({ message: "GitHub 호출 실패" });
+  }
+});
+
 // ✅ 서버 실행
 app.listen(PORT, () => {
   console.log(`✅ 백엔드 서버 실행 중: http://localhost:${PORT}`);
