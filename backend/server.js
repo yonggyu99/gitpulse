@@ -4,9 +4,11 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+const connectDB = require("./config/db");
+const challengeRoutes = require("./routes/challengeRoutes");
+
 const app = express();
 
-// ✅ 환경 변수
 const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 const JWT_SECRET = process.env.JWT_SECRET || "my_jwt_secret_key";
@@ -14,7 +16,8 @@ const FRONT_URL = process.env.FRONT_URL || "http://localhost:5173";
 const SERVER_URL =
   process.env.SERVER_URL || `http://localhost:${process.env.PORT || 4000}`;
 const PORT = process.env.PORT || 4000;
-const allowedOrigins = ["http://localhost:5173", FRONT_URL];
+
+const allowedOrigins = [FRONT_URL, "http://localhost:5173"];
 
 const userAccessTokens = {};
 
@@ -33,14 +36,13 @@ app.use(
 
 app.use(express.json());
 
-// ✅ OAuth URL 발급
+// OAuth 경로
 app.get("/oauth/github", (req, res) => {
   const redirectUri = `${SERVER_URL}/oauth/github/callback`;
   const url = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}&scope=repo`;
   res.json({ url });
 });
 
-// ✅ OAuth 콜백
 app.get("/oauth/github/callback", async (req, res) => {
   const code = req.query.code;
 
@@ -58,7 +60,6 @@ app.get("/oauth/github/callback", async (req, res) => {
     );
 
     const accessToken = tokenRes.data.access_token;
-
     const userRes = await axios.get("https://api.github.com/user", {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -89,6 +90,7 @@ app.get("/oauth/github/callback", async (req, res) => {
   }
 });
 
+// 인증 미들웨어
 function authenticate(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ message: "인증 토큰 없음" });
@@ -103,19 +105,16 @@ function authenticate(req, res, next) {
   }
 }
 
-// GitHub Proxy (README 자동 디코딩 포함)
+// GitHub proxy
 app.get("/github/proxy", authenticate, async (req, res) => {
   const { path, ...params } = req.query;
-
-  let dp = path;
+  let fullPath = path;
   try {
-    dp = decodeURIComponent(dp);
+    fullPath = decodeURIComponent(fullPath);
+    fullPath = decodeURIComponent(fullPath);
   } catch (e) {}
-  try {
-    dp = decodeURIComponent(dp);
-  } catch (e) {}
+  if (!fullPath.startsWith("/")) fullPath = `/${fullPath}`;
 
-  const fullPath = dp.startsWith("/") ? dp : `/${dp}`;
   const token = userAccessTokens[req.user.login];
   if (!token) return res.status(404).json({ message: "AccessToken 없음" });
 
@@ -131,12 +130,17 @@ app.get("/github/proxy", authenticate, async (req, res) => {
       },
       responseType: isReadme ? "text" : "json",
     });
+
     res.send(githubRes.data);
   } catch (error) {
-    console.error("Proxy 실패:", error.response?.data || error.message);
+    console.error("GitHub API 호출 실패:", error?.response?.data || error);
     res.status(500).json({ message: "GitHub 호출 실패" });
   }
 });
+
+// Challenge API 등록
+connectDB();
+app.use("/api/challenge", challengeRoutes);
 
 // ✅ 서버 실행
 app.listen(PORT, () => {
