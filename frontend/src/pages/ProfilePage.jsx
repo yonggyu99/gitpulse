@@ -78,7 +78,7 @@ const ProfilePage = () => {
 
             <UserStatCard
               iconClass="bi bi-cloud-check"
-              label="Publoc Repos"
+              label="Public Repos"
               value={userData.public_repos}
             />
           </section>
