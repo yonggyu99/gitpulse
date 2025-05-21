@@ -109,8 +109,8 @@ const OrganizationPage = () => {
 
   const chartData = Object.entries(commitCounts).map(([date, counts]) => ({
     name: date,
-    total: counts.total,
-    mine: counts.mine,
+    total: counts?.total ?? 0,
+    mine: counts?.mine ?? 0,
   }));
 
   return (
