@@ -74,17 +74,24 @@ const OrganizationPage = () => {
 
     // 커밋 수 계산
     commit.forEach((commit) => {
-      const dateStr = new Date(commit.commit.author.date)
+      const dateStr = new Date(commit.commit?.author?.date)
         .toISOString()
         .split("T")[0];
 
       const authorLogin =
-        commit.author?.login || commit.commit.author?.name || "anonymous";
+        commit.author?.login || commit.commit?.author?.name || "anonymous";
+
+      // dateStr이 없거나 commitCountByDay에 key가 없으면 초기화
+      if (!commitCountByDay[dateStr]) {
+        commitCountByDay[dateStr] = { total: 0, mine: 0 };
+      }
 
       commitCountByDay[dateStr].total += 1;
+
       if (authorLogin === curUserLogin) {
         commitCountByDay[dateStr].mine += 1;
       }
+
       userCommitMap[authorLogin] = (userCommitMap[authorLogin] || 0) + 1;
     });
 
