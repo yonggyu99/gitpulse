@@ -34,24 +34,30 @@ const PRTable = ({ orgId, orgs, repo }) => {
           <table className={css.tableBody}>
             <tbody>
               {Array.isArray(PRList)
-                ? PRList.map((PR, index) => (
-                    <tr key={index}>
-                      <td className={css.colTitle}>
-                        <a className={css.prLink}>{PR.title}</a>
-                      </td>
-                      <td className={css.colStars}>{PR.user.login}</td>
-                      <td className={css.colCreated}>
-                        {PR.created_at.split("T")[0]}
-                      </td>
-                      <td className={css.colReview}>
-                        <button
-                          onClick={() => handlePrComment(PR.number, PR.url)}
-                        >
-                          Review
-                        </button>
-                      </td>
-                    </tr>
-                  ))
+                ? PRList.map((PR, index) => {
+                    if (!PR) return null; // 방어
+
+                    const title = PR.title ?? "(제목 없음)";
+                    const login = PR?.user?.login ?? "Unknown";
+                    const createdAt = PR?.created_at?.split?.("T")?.[0] ?? "-";
+
+                    return (
+                      <tr key={index}>
+                        <td className={css.colTitle}>
+                          <a className={css.prLink}>{title}</a>
+                        </td>
+                        <td className={css.colStars}>{login}</td>
+                        <td className={css.colCreated}>{createdAt}</td>
+                        <td className={css.colReview}>
+                          <button
+                            onClick={() => handlePrComment(PR.number, PR.url)}
+                          >
+                            Review
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
                 : null}
             </tbody>
           </table>
